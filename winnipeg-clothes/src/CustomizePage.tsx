@@ -5,8 +5,8 @@ import NavBar from "./components/NavBar";
 
 import whiteShirt from "./assets/white-shirt.png";
 import "./CustomizePage.css";
-import DisplayPreview from "./DisplayPreview";
-import ImageUploader from "./ImageUploader";
+import DisplayPreview from "./components/DisplayPreview";
+import ImageUploader from "./components/ImageUploader";
 
 // function ImageUpload({
 //   onImageUpload,
