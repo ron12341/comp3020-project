@@ -1,0 +1,122 @@
+:root {
+    --display-section-width: 65%;
+    --other-section-width: 35%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.app .contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.app .contents .section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: var(--other-section-width);
+}
+
+.app .contents .section .section-customize {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.app .contents .section .section-customize .title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.app .contents .section .section-customize .options-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.app .contents .section .section-customize .options-container .option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.app .contents .section .section-customize .options-container .option .option-label {
+    margin-top: 10px;
+}
+
+/* DISPLAY SECTION */
+
+.app .contents .display-section {
+    height: 100%;
+    width: var(--display-section-width);
+}
+
+.app .contents .display-section img {
+    height: 90%;
+    width: 90%;
+}
+
+.app .contents .display-section .display-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.app .contents .display-section .display-container .rotate-btn {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.app .contents .display-section .display-container .rotate-btn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* COLOR SECTION */
+
+.option-color {
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+}
+
+#white {
+    background-color: white;
+}
+
+#black {
+    background-color: black;
+}
+
+#red {
+    background-color: red;
+}   
+
+#blue {
+    background-color: blue;
+}
