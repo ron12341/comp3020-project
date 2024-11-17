@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.preview-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  border: 1px dashed black;
+}
+
+.image-container {
+  position: relative;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: background-position 0.1s ease;
+}
+
+/* Resize Handles for all corners */
+.resize-handle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}

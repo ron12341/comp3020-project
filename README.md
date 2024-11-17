@@ -2,12 +2,12 @@
 
 ## Requirements
 
-- **Node.js**: v20.15.0
-- **npm**: v10.8.1
+- **Node.js**: v20.15.0 or higher
+- **npm**: v10.8.1 or higher
 
 ### Installing Node.js and npm
 
-If you don’t have Node.js and npm installed, download them from the Node.js website. This will install both Node.js and npm.
+If you don’t have Node.js and npm installed, download them from [Node.js website](https://nodejs.org/en/). This will install both Node.js and npm.
 
 Verify Installation:
 
