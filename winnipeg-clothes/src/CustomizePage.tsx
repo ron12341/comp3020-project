@@ -1,10 +1,40 @@
+import { useState } from "react";
+
 import Footer from "./components/Footer";
-import NavBar from "./components/navbar";
+import NavBar from "./components/NavBar";
 
 import whiteShirt from "./assets/white-shirt.png";
 import "./CustomizePage.css";
+import DisplayPreview from "./DisplayPreview";
+import ImageUploader from "./ImageUploader";
+
+// function ImageUpload({
+//   onImageUpload,
+// }: {
+//   onImageUpload: (image: string | null) => void;
+// }) {
+//   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+//     const file = event.target.files?.[0];
+//     if (file) {
+//       onImageUpload(URL.createObjectURL(file));
+//     }
+//   };
+
+//   return (
+//     <div className="uploadSection">
+//       <input type="file" accept="image/*" onChange={handleImageUpload} />
+//     </div>
+//   );
+// }
 
 function CustomizePage() {
+  const [image, setImage] = useState<string | null>(null);
+
+  const handleImageUpload = (image: string) => {
+    console.log("Uploaded Image (Base64):", image);
+    setImage(image);
+  };
+
   return (
     <div className="app">
       <NavBar />
@@ -44,6 +74,10 @@ function CustomizePage() {
             <img src={whiteShirt} alt="shirt" />
             <button className="rotate-btn">Rotate</button>
           </div>
+
+          <div className="display-preview-container">
+            <DisplayPreview image={image} />
+          </div>
         </div>
 
         <div className="section">
@@ -68,8 +102,11 @@ function CustomizePage() {
               </div>
             </div>
           </div>
-          <div className="section-customize" id="change-sleeve">
-            <h1>Option 2</h1>
+          <div className="section-customize" id="upload-image">
+            <div className="title">Upload Image</div>
+            <div className="options-container">
+              <ImageUploader onFileUpload={handleImageUpload} />
+            </div>
           </div>
           <div className="section-customize" id="change-fit">
             <h1>Option 3</h1>

@@ -1,0 +1,32 @@
+.image-uploader {
+  height: 80px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: white;
+  transition: background-color 0.2s;
+}
+
+.image-uploader.dragging {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+}
+
+.image-uploader input {
+  display: none;
+}
+
+.image-uploader img {
+  display: block;
+  width: 150px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.image-uploader p {
+  margin: 0;
+  font-size: 18px;
+  color: #777;
+}

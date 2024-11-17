@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import { useState, MouseEvent } from "react";
 import "./DisplayPreview.css";
 
 interface Position {
@@ -9,25 +9,6 @@ interface Position {
 interface Size {
   width: number;
   height: number;
-}
-
-function ImageUpload({
-  onImageUpload,
-}: {
-  onImageUpload: (image: string | null) => void;
-}) {
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      onImageUpload(URL.createObjectURL(file));
-    }
-  };
-
-  return (
-    <div className="uploadSection">
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-    </div>
-  );
 }
 
 function ImagePreview({
@@ -83,13 +64,13 @@ function ImagePreview({
 
   return (
     <div
-      className="previewContainer"
+      className="preview-container"
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
       {image ? (
         <div
-          className="previewBox"
+          className="image-container"
           style={{
             transform: `translate(${position.x}px, ${position.y}px)`,
             width: `${size.width}px`,
@@ -104,25 +85,20 @@ function ImagePreview({
             style={{ width: "100%", height: "100%", cursor: "grab" }}
           />
           <div
-            className="resizeHandle"
+            className="resize-handle"
             onMouseDown={handleResizeMouseDown}
           ></div>
         </div>
       ) : (
-        <div className="placeholderText">No image uploaded</div>
+        <div></div>
       )}
     </div>
   );
 }
 
-function DisplayPreview() {
-  const [image, setImage] = useState<string | null>(null);
+function DisplayPreview({ image }: { image: string | null }) {
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
-  const [size, setSize] = useState<Size>({ width: 300, height: 300 });
-
-  const handleImageUpload = (image: string | null) => {
-    setImage(image);
-  };
+  const [size, setSize] = useState<Size>({ width: 150, height: 150 });
 
   const handleDrag = (deltaX: number, deltaY: number) => {
     setPosition((prevPosition) => ({
@@ -139,16 +115,13 @@ function DisplayPreview() {
   };
 
   return (
-    <div>
-      <ImageUpload onImageUpload={handleImageUpload} />
-      <ImagePreview
-        image={image}
-        position={position}
-        size={size}
-        onDrag={handleDrag}
-        onResize={handleResize}
-      />
-    </div>
+    <ImagePreview
+      image={image}
+      position={position}
+      size={size}
+      onDrag={handleDrag}
+      onResize={handleResize}
+    />
   );
 }
 
