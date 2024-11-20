@@ -35,8 +35,14 @@ function CustomizePage() {
     setUploaded(null);
   };
 
-  const handleNecklineClick = (neckline: string) => {
-    setNeckline(neckline);
+  const handleLeftClick = () => {
+    // Logic for the left button click
+    console.log("Left button clicked");
+  };
+
+  const handleRightClick = () => {
+    // Logic for the right button click
+    console.log("Right button clicked");
   };
 
   return (
@@ -50,7 +56,7 @@ function CustomizePage() {
             <div className="options-container">
               <div
                 className={`option ${neckline === "regular" ? "selected" : ""}`}
-                onClick={() => handleNecklineClick("regular")}
+                onClick={() => setNeckline("regular")}
               >
                 <img
                   src={`${imagesBasePath}/options/neckline/regular.png`}
@@ -60,7 +66,7 @@ function CustomizePage() {
               </div>
               <div
                 className={`option ${neckline === "vneck" ? "selected" : ""}`}
-                onClick={() => handleNecklineClick("vneck")}
+                onClick={() => setNeckline("vneck")}
               >
                 <img
                   src={`${imagesBasePath}/options/neckline/vneck.png`}
@@ -70,7 +76,7 @@ function CustomizePage() {
               </div>
               <div
                 className={`option ${neckline === "casual" ? "selected" : ""}`}
-                onClick={() => handleNecklineClick("casual")}
+                onClick={() => setNeckline("casual")}
               >
                 <img
                   src={`${imagesBasePath}/options/neckline/casual.png`}
@@ -156,19 +162,29 @@ function CustomizePage() {
 
         <div className="display-section">
           <div className="display-container">
-            <img
-              className={getApparelClassName()}
-              src={getApparelImagePath()}
-              alt="Apparel Preview"
-            />
-            <div
-              className="display-preview-container"
-              style={{
-                border: `1px dashed ${color === "black" ? "white" : "black"}`,
-              }}
-            >
-              <DisplayPreview image={uploaded} />
+            <button className="left-button" onClick={handleLeftClick}>
+              &#8249;
+            </button>
+
+            <div className="image-container">
+              <img
+                className={getApparelClassName()}
+                src={getApparelImagePath()}
+                alt="Apparel Preview"
+              />
+              <div
+                className="display-preview-container"
+                style={{
+                  border: `1px dashed ${color === "black" ? "white" : "black"}`,
+                }}
+              >
+                <DisplayPreview image={uploaded} />
+              </div>
             </div>
+
+            <button className="right-button" onClick={handleRightClick}>
+              &#8250;
+            </button>
           </div>
           <button className="rotate-btn">Rotate</button>
         </div>
