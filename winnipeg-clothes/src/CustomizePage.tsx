@@ -1,38 +1,42 @@
 import { useState } from "react";
-
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
-
-import whiteShirt from "./assets/white-shirt.png";
-import "./CustomizePage.css";
 import DisplayPreview from "./components/DisplayPreview";
 import ImageUploader from "./components/ImageUploader";
+import "./CustomizePage.css";
 
-// function ImageUpload({
-//   onImageUpload,
-// }: {
-//   onImageUpload: (image: string | null) => void;
-// }) {
-//   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     const file = event.target.files?.[0];
-//     if (file) {
-//       onImageUpload(URL.createObjectURL(file));
-//     }
-//   };
-
-//   return (
-//     <div className="uploadSection">
-//       <input type="file" accept="image/*" onChange={handleImageUpload} />
-//     </div>
-//   );
-// }
+const imagesBasePath = "../public/images";
 
 function CustomizePage() {
-  const [image, setImage] = useState<string | null>(null);
+  const [uploaded, setUploaded] = useState<string | null>(null);
+  const [apparel, setApparel] = useState<string>("tshirt");
+  const [color, setColor] = useState<string>("white");
+  const [neckline, setNeckline] = useState<string>("regular");
+  const [sleeves, setSleeves] = useState<string>("regular");
+  const [fit, setFit] = useState<string>("regular");
+
+  const getApparelClassName = () => {
+    const nl = neckline == "casual" ? "regular" : neckline;
+    const sl = sleeves == "fitted" ? "regular" : sleeves;
+    return `${apparel}-${color}-${nl}-${sl}`;
+  };
+
+  const getApparelImagePath = () => {
+    return `${imagesBasePath}/apparels/${getApparelClassName()}.png`;
+  };
 
   const handleImageUpload = (image: string) => {
     console.log("Uploaded Image (Base64):", image);
-    setImage(image);
+    setUploaded(image);
+  };
+
+  const handleImageDelete = () => {
+    console.log("Image deleted");
+    setUploaded(null);
+  };
+
+  const handleNecklineClick = (neckline: string) => {
+    setNeckline(neckline);
   };
 
   return (
@@ -44,68 +48,166 @@ function CustomizePage() {
           <div className="section-customize" id="change-neckline">
             <p className="title">Change Neckline</p>
             <div className="options-container">
-              <div className="option">Option1</div>
-              <div className="option">Option2</div>
-              <div className="option">Option3</div>
+              <div
+                className={`option ${neckline === "regular" ? "selected" : ""}`}
+                onClick={() => handleNecklineClick("regular")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/neckline/regular.png`}
+                  alt="Regular"
+                />
+                <span>Regular</span>
+              </div>
+              <div
+                className={`option ${neckline === "vneck" ? "selected" : ""}`}
+                onClick={() => handleNecklineClick("vneck")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/neckline/vneck.png`}
+                  alt="V-neck"
+                />
+                <span>V-neck</span>
+              </div>
+              <div
+                className={`option ${neckline === "casual" ? "selected" : ""}`}
+                onClick={() => handleNecklineClick("casual")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/neckline/casual.png`}
+                  alt="Casual"
+                />
+                <span>Casual</span>
+              </div>
             </div>
           </div>
 
           <div className="section-customize" id="change-sleeves">
             <p className="title">Change Sleeves</p>
             <div className="options-container">
-              <div className="option">Option1</div>
-              <div className="option">Option2</div>
-              <div className="option">Option3</div>
+              <div
+                className={`option ${sleeves === "regular" ? "selected" : ""}`}
+                onClick={() => setSleeves("regular")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/sleeves/regular.png`}
+                  alt="Regular"
+                />
+                <span>Regular</span>
+              </div>
+              <div
+                className={`option ${sleeves === "fitted" ? "selected" : ""}`}
+                onClick={() => setSleeves("fitted")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/sleeves/fitted.png`}
+                  alt="Fitted"
+                />
+                <span>Fitted</span>
+              </div>
+              <div
+                className={`option ${sleeves === "long" ? "selected" : ""}`}
+                onClick={() => setSleeves("long")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/sleeves/long.png`}
+                  alt="Long-sleeve"
+                />
+                <span>Long</span>
+              </div>
             </div>
           </div>
 
           <div className="section-customize" id="change-fit">
             <p className="title">Change Fit</p>
             <div className="options-container">
-              <div className="option">Option1</div>
-              <div className="option">Option2</div>
-              <div className="option">Option3</div>
+              <div
+                className={`option ${fit === "regular" ? "selected" : ""}`}
+                onClick={() => setFit("regular")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/fit/regular.png`}
+                  alt="Regular"
+                />
+                <span>Regular</span>
+              </div>
+              <div
+                className={`option ${fit === "slim" ? "selected" : ""}`}
+                onClick={() => setFit("slim")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/fit/slim.png`}
+                  alt="Slim"
+                />
+                <span>Slim</span>
+              </div>
+              <div
+                className={`option ${fit === "loose" ? "selected" : ""}`}
+                onClick={() => setFit("loose")}
+              >
+                <img
+                  src={`${imagesBasePath}/options/fit/loose.png`}
+                  alt="Loose"
+                />
+                <span>Loose</span>
+              </div>
             </div>
           </div>
         </div>
 
         <div className="display-section">
           <div className="display-container">
-            <img src={whiteShirt} alt="shirt" />
-            <button className="rotate-btn">Rotate</button>
+            <img
+              className={getApparelClassName()}
+              src={getApparelImagePath()}
+              alt="Apparel Preview"
+            />
+            <div
+              className="display-preview-container"
+              style={{
+                border: `1px dashed ${color === "black" ? "white" : "black"}`,
+              }}
+            >
+              <DisplayPreview image={uploaded} />
+            </div>
           </div>
-
-          <div className="display-preview-container">
-            <DisplayPreview image={image} />
-          </div>
+          <button className="rotate-btn">Rotate</button>
         </div>
 
         <div className="section">
           <div className="section-customize" id="change-neckline">
             <p className="title">Change Colour</p>
+
             <div className="options-container">
-              <div className="option">
+              <div
+                className={`option ${color === "white" ? "selected" : ""}`}
+                onClick={() => setColor("white")}
+              >
                 <div className="option-color" id="white"></div>
-                <p className="option-label">White</p>
+                <span>White</span>
               </div>
-              <div className="option">
+              <div
+                className={`option ${color === "black" ? "selected" : ""}`}
+                onClick={() => setColor("black")}
+              >
                 <div className="option-color" id="black"></div>
-                <p className="option-label">Black</p>
+                <span>Black</span>
               </div>
-              <div className="option">
-                <div className="option-color" id="red"></div>
-                <p className="option-label">Red</p>
-              </div>
-              <div className="option">
-                <div className="option-color" id="blue"></div>
-                <p className="option-label">Blue</p>
+              <div
+                className={`option ${color === "grey" ? "selected" : ""}`}
+                onClick={() => setColor("grey")}
+              >
+                <div className="option-color" id="grey"></div>
+                <span>Grey</span>
               </div>
             </div>
           </div>
           <div className="section-customize" id="upload-image">
             <div className="title">Upload Image</div>
             <div className="options-container">
-              <ImageUploader onFileUpload={handleImageUpload} />
+              <ImageUploader
+                onFileUpload={handleImageUpload}
+                onFileDelete={handleImageDelete}
+              />
             </div>
           </div>
           <div className="section-customize" id="change-fit">

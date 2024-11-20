@@ -1,6 +1,8 @@
 import { useState, MouseEvent } from "react";
 import "./DisplayPreview.css";
 
+const IMAGE_MIN_SIZE = 20;
+
 interface Position {
   x: number;
   y: number;
@@ -81,7 +83,7 @@ function ImagePreview({
           <img
             src={image}
             alt="Preview"
-            draggable="false" // Prevents native drag behavior
+            draggable="false"
             style={{ width: "100%", height: "100%", cursor: "grab" }}
           />
           <div
@@ -109,8 +111,8 @@ function DisplayPreview({ image }: { image: string | null }) {
 
   const handleResize = (deltaWidth: number, deltaHeight: number) => {
     setSize((prevSize) => ({
-      width: Math.max(prevSize.width + deltaWidth, 100),
-      height: Math.max(prevSize.height + deltaHeight, 100),
+      width: Math.max(prevSize.width + deltaWidth, IMAGE_MIN_SIZE),
+      height: Math.max(prevSize.height + deltaHeight, IMAGE_MIN_SIZE),
     }));
   };
 

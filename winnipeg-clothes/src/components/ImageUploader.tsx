@@ -1,15 +1,15 @@
 import { useState } from "react";
 
-import './ImageUploader.css'
+import "./ImageUploader.css";
 
 interface ImageUploaderProps {
   onFileUpload: (image: string) => void;
+  onFileDelete: () => void;
 }
 
-function ImageUploader({ onFileUpload }: ImageUploaderProps) {
+function ImageUploader({ onFileUpload, onFileDelete }: ImageUploaderProps) {
   const [dragging, setDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -49,10 +49,14 @@ function ImageUploader({ onFileUpload }: ImageUploaderProps) {
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
-      setImagePreview(result); // Update the preview
       onFileUpload(result); // Pass the image string to the parent
     };
     reader.readAsDataURL(file);
+  };
+
+  const deleteImage = () => {
+    onFileDelete();
+    setFile(null);
   };
 
   const handleClick = () => {
@@ -73,8 +77,20 @@ function ImageUploader({ onFileUpload }: ImageUploaderProps) {
         accept="image/*"
         onChange={handleFileInputChange}
       />
-      {imagePreview ? (
-        <p>{file?.name}</p>
+      {file ? (
+        <div className="filename-container">
+          <p>{file?.name}</p>
+          <button
+            className="delete-btn"
+            aria-label="Delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteImage();
+            }}
+          >
+            &#x2715;
+          </button>
+        </div>
       ) : (
         <p>Click or drop an image file to upload</p>
       )}

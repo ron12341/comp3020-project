@@ -8,9 +8,7 @@ function App() {
       <Routes>
         <Route path="/customize" element={<CustomizePage />}></Route>
       </Routes>
-
-      
-      <DesignPage />
+      <CustomizePage />
     </>
   );
 }

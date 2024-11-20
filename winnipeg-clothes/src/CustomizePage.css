@@ -1,25 +1,42 @@
 :root {
-  --display-section-width: 65%;
-  --other-section-width: 35%;
+  --display-section-width: 60%;
+  --other-section-width: 25%;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html, body {
+  height: 100%;          /* Ensure the root elements take up the full height of the viewport */
+  margin: 0;             /* Remove default margin */
+  overflow: hidden;      /* Prevent scrolling */
 }
 
 .app {
-  height: 100vh;
-  width: 100vw;
+  height: 100vh;       
+  width: 100vw;         
+  display: flex;         
+  flex-direction: column;
+}
+
+.app {
   display: flex;
   flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+.navbar {
+  height: 10vh; /* Fixed height for navbar */
+  background-color: #874D2E;
+}
+
+.footer {
+  height: 10vh; /* Fixed height for footer */
+  background-color: #333;
 }
 
 .app .contents {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  overflow: auto;
+  width: 100%;
   height: 100%;
 }
 
@@ -29,6 +46,7 @@
   justify-content: space-between;
   height: 100%;
   width: var(--other-section-width);
+  overflow: auto;
 }
 
 .app .contents .section .section-customize {
@@ -43,82 +61,112 @@
   font-weight: bold;
 }
 
-.app .contents .section .section-customize .options-container {
+/* DISPLAY SECTION */
+
+.display-section {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.display-section .display-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.display-section .display-container img {
+  display: block;
+  width: 75%;
+  height: 90%;
+}
+
+.display-preview-container {
+  height: 40vh;
+  width: 20vw;
+  position: absolute;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.display-section .rotate-btn {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.display-section .rotate-btn:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/* OPTIONS SECTION */
+
+.options-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 10px;
+  gap: 15px;
 }
 
-.app .contents .section .section-customize .options-container .option {
+.options-container .option {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  width: 30%;
 }
 
-.app
-  .contents
-  .section
-  .section-customize
-  .options-container
-  .option
-  .option-label {
-  margin-top: 10px;
-}
-
-/* DISPLAY SECTION */
-
-.display-section {
-  height: 100%;
-  width: var(--display-section-width);
-}
-
-.display-section img {
-  height: 90%;
-  width: 90%;
-}
-
-.display-section .display-preview-container {
-  height: 40vh;
-  width: 23vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Adjust for the element's size */
-  border-radius: 8px;
-}
-
-.display-section .display-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.display-section .display-container .rotate-btn {
-  padding: 10px;
-  border: 1px solid black;
-}
-
-.display-section .display-container .rotate-btn:hover {
+.option:hover {
+  transform: scale(1.05);
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.3);
 }
+
+.option img {
+  width: 100%;
+  height: 40px;
+  border: 2px solid black;
+}
+
+.option span {
+  margin-top: 12px;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.option.selected {
+  transform: scale(1.05);
+  border-color: #007bff;
+  background-color: #f0f8ff3d;
+}
+
+.option.selected img {
+  border-color: #007bff;
+}
+
 
 /* COLOR SECTION */
 
 .option-color {
   height: 40px;
-  width: 40px;
+  width: 100%;
   border: 1px solid black;
+}
+
+.option.selected .option-color {
+  transform: scale(1.05);
+  border: 2px solid #007bff;
 }
 
 #white {
@@ -129,10 +177,25 @@
   background-color: black;
 }
 
-#red {
-  background-color: red;
+#grey {
+  background-color: rgba(128, 128, 128, 0.29);
 }
 
 #blue {
   background-color: blue;
+}
+
+/* APPAREL IMAGE SECTION */
+
+.tshirt-white-vneck-regular {
+  transform: translateX(5px);
+}
+
+
+@media (max-width: 1000px) {
+  .options-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
 }
