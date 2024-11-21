@@ -1,28 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import DisplayPreview from "./components/DisplayPreview";
 import ImageUploader from "./components/ImageUploader";
 import "./CustomizePage.css";
 
-const imagesBasePath = "../public/images";
+const imagesBasePath = "/images";
 
 const SIZES = ["XS", "S", "M", "L", "XL", "2XL", "3XL"];
+const APPAREL_STYLES = ["tshirt", "polo", "hoodie", "sweatpant", "hat"];
 
 function CustomizePage() {
   const [uploaded, setUploaded] = useState<string | null>(null);
-  const [apparel, setApparel] = useState<string>("tshirt");
+  const [apparel, setApparel] = useState<number>(0);
   const [color, setColor] = useState<string>("white");
   const [neckline, setNeckline] = useState<string>("regular");
   const [sleeves, setSleeves] = useState<string>("regular");
   const [fit, setFit] = useState<string>("regular");
   const [size, setSize] = useState<string>("small");
   const [quantity, setQuantity] = useState<number | "">(1);
+  const [isCustomizable, setIsCustomizable] = useState<boolean>(true);
 
   const getApparelClassName = () => {
-    const nl = neckline == "casual" ? "regular" : neckline;
-    const sl = sleeves == "fitted" ? "regular" : sleeves;
-    return `${apparel}-${color}-${nl}-${sl}`;
+    let style = APPAREL_STYLES[apparel];
+
+    let className = "";
+    if (style === "tshirt") {
+      const nl = neckline == "casual" ? "regular" : neckline;
+      const sl = sleeves == "fitted" ? "regular" : sleeves;
+      className = `${style}-${color}-${nl}-${sl}`;
+    } else {
+      className = `${style}-${color}`;
+    }
+
+    return className;
   };
 
   const getApparelImagePath = () => {
@@ -42,11 +53,13 @@ function CustomizePage() {
   const handleLeftClick = () => {
     // Logic for the left button click
     console.log("Left button clicked");
+    setApparel((prevApparel) => (prevApparel + APPAREL_STYLES.length - 1) % APPAREL_STYLES.length);
   };
 
   const handleRightClick = () => {
     // Logic for the right button click
     console.log("Right button clicked");
+    setApparel((prevApparel) => (prevApparel + 1) % APPAREL_STYLES.length);
   };
 
   const handleAddToCart = () => {
@@ -54,12 +67,17 @@ function CustomizePage() {
     console.log("Added to cart");
   };
 
+  useEffect(() => {
+    const style = APPAREL_STYLES[apparel];
+    setIsCustomizable(style === "tshirt");
+  }, [apparel]);
+
   return (
     <div className="app">
       <NavBar />
 
       <div className="contents">
-        <div className="section">
+        <div className={`section ${!isCustomizable ? 'disabled' : ''}`}>
           <div className="section-customize" id="change-neckline">
             <p className="title">Change Neckline</p>
             <div className="options-container">
@@ -264,7 +282,7 @@ function CustomizePage() {
                     value={quantity}
                     onChange={(e) => {
                       const value = Number(e.target.value);
-                      setQuantity( value > 0 ? value : 0); // Allow empty value but internally handle as 0
+                      setQuantity(value > 0 ? value : 0); // Allow empty value but internally handle as 0
                       console.log(quantity);
                     }}
                     min="1"
