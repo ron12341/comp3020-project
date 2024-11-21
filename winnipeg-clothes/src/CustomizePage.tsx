@@ -7,6 +7,8 @@ import "./CustomizePage.css";
 
 const imagesBasePath = "../public/images";
 
+const SIZES = ["XS", "S", "M", "L", "XL", "2XL", "3XL"];
+
 function CustomizePage() {
   const [uploaded, setUploaded] = useState<string | null>(null);
   const [apparel, setApparel] = useState<string>("tshirt");
@@ -14,6 +16,8 @@ function CustomizePage() {
   const [neckline, setNeckline] = useState<string>("regular");
   const [sleeves, setSleeves] = useState<string>("regular");
   const [fit, setFit] = useState<string>("regular");
+  const [size, setSize] = useState<string>("small");
+  const [quantity, setQuantity] = useState<number | "">(1);
 
   const getApparelClassName = () => {
     const nl = neckline == "casual" ? "regular" : neckline;
@@ -43,6 +47,11 @@ function CustomizePage() {
   const handleRightClick = () => {
     // Logic for the right button click
     console.log("Right button clicked");
+  };
+
+  const handleAddToCart = () => {
+    // Logic for adding to cart
+    console.log("Added to cart");
   };
 
   return (
@@ -218,7 +227,7 @@ function CustomizePage() {
             </div>
           </div>
           <div className="section-customize" id="upload-image">
-            <div className="title">Upload Image</div>
+            <p className="title">Upload Image</p>
             <div className="options-container">
               <ImageUploader
                 onFileUpload={handleImageUpload}
@@ -226,8 +235,44 @@ function CustomizePage() {
               />
             </div>
           </div>
+
           <div className="section-customize" id="change-fit">
-            <h1>Option 3</h1>
+            <p className="title">Size and Quantity</p>
+
+            <div className="size-quantity-button-container">
+              <div className="size-quantity-container">
+                <div className="size-container">
+                  <label>Size:</label>
+                  <select
+                    id="size-select"
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                  >
+                    {SIZES.map((size) => (
+                      <option key={size} value={size}>
+                        {size}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="quantity-container">
+                  <label>Quantity:</label>
+                  <input
+                    className="quantity-input"
+                    type="number"
+                    value={quantity}
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      setQuantity( value > 0 ? value : 0); // Allow empty value but internally handle as 0
+                      console.log(quantity);
+                    }}
+                    min="1"
+                  />
+                </div>
+              </div>
+              <button onClick={handleAddToCart}>Add to Cart</button>
+            </div>
           </div>
         </div>
       </div>

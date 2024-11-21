@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 
 function NavBar() {
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <div className="nav-links">
         <a href="#">Home</a>
       </div>
@@ -12,7 +12,7 @@ function NavBar() {
         <p className="logo-text">Winnipeg Clothes</p>
       </div>
       <button className="cart-btn">Cart</button>
-    </div>
+    </nav>
   );
 }
 
