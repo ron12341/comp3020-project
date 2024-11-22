@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CartItem } from "../interfaces/CartItem";
 
 import "./CartItemCard.css";
@@ -9,13 +9,32 @@ interface CartItemCardProps {
   onRemove: (item: CartItem) => void;
 }
 
-const CartItemCard: React.FC<CartItemCardProps> = ({ item, onChangeQuantity, onRemove }) => {
+const CartItemCard: React.FC<CartItemCardProps> = ({
+  item,
+  onChangeQuantity,
+  onRemove,
+}) => {
+  const [inputValue, setInputValue] = useState<string>(
+    item.quantity.toString()
+  );
+
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuantity = Number(e.target.value);
-    if (newQuantity === 0) {
-      onRemove(item);
-    } else {
+    const inputValue = e.target.value;
+
+    setInputValue(inputValue);
+  };
+
+  const handleBlur = () => {
+    // On blur, if the input is empty, reset to the item's current quantity
+
+    if (inputValue !== "" && !isNaN(Number(inputValue))) {
+      const newQuantity = Number(inputValue);
+
       onChangeQuantity(item, newQuantity);
+    }
+
+    if (inputValue === "" || inputValue === "0") {
+      setInputValue(item.quantity.toString());
     }
   };
 
@@ -30,11 +49,14 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ item, onChangeQuantity, onR
           <input
             type="number"
             min="0"
-            value={item.quantity}
+            value={inputValue}
             onChange={handleQuantityChange}
             className="quantity-input"
+            onBlur={handleBlur}
           />
-          <button onClick={() => onRemove(item)} className="remove-btn">Remove</button>
+          <button onClick={() => onRemove(item)} className="remove-btn">
+            Remove
+          </button>
         </div>
       </div>
     </div>
