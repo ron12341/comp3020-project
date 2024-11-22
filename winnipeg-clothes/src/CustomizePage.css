@@ -17,12 +17,6 @@ body {
   flex-direction: column;
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; /* Full viewport height */
-}
-
 .navbar {
   height: 10vh; /* Fixed height for navbar */
   background-color: #874d2e;

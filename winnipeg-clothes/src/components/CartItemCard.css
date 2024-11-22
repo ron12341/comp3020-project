@@ -1,0 +1,107 @@
+/* General card styling */
+.cart-item-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+  }
+  
+  /* Image styling */
+  .item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Details container */
+  .item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+  
+  /* Text styling */
+  .item-description {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+  }
+  
+  .item-size {
+    font-size: 14px;
+    color: #666;
+    margin: 4px 0;
+  }
+  
+  .item-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #27ae60;
+    margin: 8px 0;
+  }
+  
+  /* Controls container */
+  .item-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  /* Quantity input styling */
+  .quantity-input {
+    width: 60px;
+    padding: 4px 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  /* Remove button styling */
+  .remove-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .remove-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .cart-item-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .item-image {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .item-controls {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .quantity-input {
+      width: 100%;
+    }
+  }
+  

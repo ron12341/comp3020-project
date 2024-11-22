@@ -7,7 +7,7 @@ import CartPage from "./CartPage.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <CartPage />
+      <App />
     </BrowserRouter>
   </StrictMode>
 );

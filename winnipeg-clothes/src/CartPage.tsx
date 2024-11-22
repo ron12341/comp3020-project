@@ -1,68 +1,65 @@
-import React, { useState } from "react";
+import React from "react";
 import CartItemCard from "./components/CartItemCard";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
-interface CartItem {
-  id: string;
-  image: string;
-  description: string;
-  size: string;
-  quantity: number;
-  price: number;
-}
+import "./CartPage.css";
+import { useCart } from "./contexts/CartContext";
+import { CartItem } from "./interfaces/CartItem";
 
 const CartPage: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: "1",
-      image: "/path/to/image1.jpg",
-      description: "T-shirt",
-      size: "M",
-      quantity: 2,
-      price: 20.0,
-    },
-    {
-      id: "2",
-      image: "/path/to/image2.jpg",
-      description: "Hoodie",
-      size: "L",
-      quantity: 1,
-      price: 40.0,
-    },
-  ]);
+  const { cart, removeFromCart, addToCart } = useCart();
 
-  const handleQuantityChange = (id: string, newQuantity: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      )
-    );
+  const handleQuantityChange = (
+    itemToChange: CartItem,
+    newQuantity: number
+  ) => {
+    console.log("Quantity changed:", newQuantity);
+    if (newQuantity <= 0) {
+      const confirmRemove = window.confirm(
+        `Quantity of "${itemToChange.name}" is 0. Do you want to remove this item from your cart?`
+      );
+      if (confirmRemove) {
+        removeFromCart(itemToChange);
+      }
+      return;
+    }
+
+    addToCart({
+      ...itemToChange,
+      quantity: newQuantity - itemToChange.quantity,
+    });
   };
 
-  const handleRemoveItem = (id: string) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  };
-
-  const totalValue = cartItems.reduce(
+  const totalValue = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
 
   return (
-    <div className="cart-page">
-      <div className="cart-items">
-        {cartItems.map((item) => (
-          <CartItemCard
-            key={item.id}
-            item={item}
-            onChangeQuantity={handleQuantityChange}
-            onRemove={handleRemoveItem}
-          />
-        ))}
+    <div className="app">
+      <NavBar />
+      <div className="cart-page">
+        <div className="cart-items">
+          {cart.length > 0 ? (
+            cart.map((item) => (
+              <CartItemCard
+                key={item.name}
+                item={item}
+                onChangeQuantity={handleQuantityChange}
+                onRemove={removeFromCart}
+              />
+            ))
+          ) : (
+            <p className="empty-cart-message">Your cart is empty!</p>
+          )}
+        </div>
+        <div className="cart-summary">
+          <h2>Order Summary</h2>
+          <p>Total: ${totalValue.toFixed(2)}</p>
+        </div>
       </div>
-      <div className="cart-summary">
-        <h2>Order Summary</h2>
-        <p>Total: ${totalValue.toFixed(2)}</p>
-      </div>
+      <Footer />
     </div>
   );
 };

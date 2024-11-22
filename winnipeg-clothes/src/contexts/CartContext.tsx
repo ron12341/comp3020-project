@@ -1,12 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-interface CartItem {
-    name: string;
-    price: number;
-    size: string;
-    quantity: number;
-    image?: string;
-  }
+import { CartItem } from '../interfaces/CartItem';
 
 interface CartContextType {
   cart: CartItem[];
@@ -22,10 +15,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem === item);
+      const existingItem = prevCart.find((cartItem) => cartItem.name === item.name);
+      console.log("Existing Item: ", existingItem);
+      console.log("Adding ITem: ", item);
       if (existingItem) {
         return prevCart.map((cartItem) =>
-          cartItem === item
+          cartItem.name === item.name
             ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
             : cartItem
         );

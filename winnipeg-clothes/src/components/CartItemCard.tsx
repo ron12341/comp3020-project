@@ -1,27 +1,21 @@
 import React from "react";
+import { CartItem } from "../interfaces/CartItem";
 
-interface CartItem {
-  id: string;
-  image: string;
-  description: string;
-  size: string;
-  quantity: number;
-  price: number;
-}
+import "./CartItemCard.css";
 
 interface CartItemCardProps {
   item: CartItem;
-  onChangeQuantity: (id: string, newQuantity: number) => void;
-  onRemove: (id: string) => void;
+  onChangeQuantity: (item: CartItem, newQuantity: number) => void;
+  onRemove: (item: CartItem) => void;
 }
 
 const CartItemCard: React.FC<CartItemCardProps> = ({ item, onChangeQuantity, onRemove }) => {
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = Number(e.target.value);
     if (newQuantity === 0) {
-      onRemove(item.id);
+      onRemove(item);
     } else {
-      onChangeQuantity(item.id, newQuantity);
+      onChangeQuantity(item, newQuantity);
     }
   };
 
@@ -40,7 +34,7 @@ const CartItemCard: React.FC<CartItemCardProps> = ({ item, onChangeQuantity, onR
             onChange={handleQuantityChange}
             className="quantity-input"
           />
-          <button onClick={() => onRemove(item.id)} className="remove-btn">Remove</button>
+          <button onClick={() => onRemove(item)} className="remove-btn">Remove</button>
         </div>
       </div>
     </div>

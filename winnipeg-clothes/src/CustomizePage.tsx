@@ -55,7 +55,10 @@ function CustomizePage() {
   const handleLeftClick = () => {
     // Logic for the left button click
     console.log("Left button clicked");
-    setApparel((prevApparel) => (prevApparel + APPAREL_STYLES.length - 1) % APPAREL_STYLES.length);
+    setApparel(
+      (prevApparel) =>
+        (prevApparel + APPAREL_STYLES.length - 1) % APPAREL_STYLES.length
+    );
   };
 
   const handleRightClick = () => {
@@ -65,8 +68,7 @@ function CustomizePage() {
   };
 
   const handleAddToCart = () => {
-    
-    if (  quantity === "" || quantity < 1) {
+    if (quantity === "" || quantity < 1) {
       alert("Quantity must be at least 1");
       return;
     }
@@ -79,6 +81,7 @@ function CustomizePage() {
       size: size,
       quantity: quantity,
       image: getApparelImagePath(),
+      description: `Apparel: ${APPAREL_STYLES[apparel]}, Color: ${color}, Neckline: ${neckline}, Sleeves: ${sleeves}, Fit: ${fit}, Size: ${size}`,
     });
   };
 
@@ -92,7 +95,7 @@ function CustomizePage() {
       <NavBar />
 
       <div className="contents">
-        <div className={`section ${!isCustomizable ? 'disabled' : ''}`}>
+        <div className={`section ${!isCustomizable ? "disabled" : ""}`}>
           <div className="section-customize" id="change-neckline">
             <p className="title">Change Neckline</p>
             <div className="options-container">

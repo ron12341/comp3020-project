@@ -1,6 +1,7 @@
 import "./NavBar.css";
 import logo from "../assets/logo.png";
 import { useCart } from "../contexts/CartContext";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   const { cart } = useCart();
@@ -14,9 +15,11 @@ function NavBar() {
         <img src={logo} alt="Logo" />
         <p className="logo-text">Winnipeg Clothes</p>
       </div>
-      <button className="cart-btn">
-        🛒 Cart ({cart.reduce((acc, item) => acc + item.quantity, 0)})
-      </button>
+      <Link to="/cart">
+        <button className="cart-btn">
+          🛒 Cart ({cart.reduce((acc, item) => acc + item.quantity, 0)})
+        </button>
+      </Link>
     </nav>
   );
 }
