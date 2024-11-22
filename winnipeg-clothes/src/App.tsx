@@ -11,7 +11,7 @@ function App() {
         <Route path="/customize" element={<CustomizePage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
       </Routes>
-      {/* <CustomizePage /> */}
+      <CustomizePage />
       
     </CartProvider>
   );

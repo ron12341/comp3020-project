@@ -5,6 +5,7 @@ import DisplayPreview from "./components/DisplayPreview";
 import ImageUploader from "./components/ImageUploader";
 import "./CustomizePage.css";
 import { useCart } from "./contexts/CartContext";
+import { CartItem } from "./interfaces/CartItem";
 
 const imagesBasePath = "/images";
 
@@ -13,13 +14,13 @@ const APPAREL_STYLES = ["tshirt", "polo", "hoodie", "sweatpant", "hat"];
 
 function CustomizePage() {
   const { addToCart } = useCart();
-  const [uploaded, setUploaded] = useState<string | null>(null);
+  const [uploaded, setUploaded] = useState<string | "">("");
   const [apparel, setApparel] = useState<number>(0);
   const [color, setColor] = useState<string>("white");
   const [neckline, setNeckline] = useState<string>("regular");
   const [sleeves, setSleeves] = useState<string>("regular");
   const [fit, setFit] = useState<string>("regular");
-  const [size, setSize] = useState<string>("small");
+  const [size, setSize] = useState<string>("XS");
   const [quantity, setQuantity] = useState<number | "">(1);
   const [isCustomizable, setIsCustomizable] = useState<boolean>(true);
 
@@ -49,22 +50,21 @@ function CustomizePage() {
 
   const handleImageDelete = () => {
     console.log("Image deleted");
-    setUploaded(null);
+    setUploaded("");
   };
 
   const handleLeftClick = () => {
     // Logic for the left button click
     console.log("Left button clicked");
-    setApparel(
-      (prevApparel) =>
-        (prevApparel + APPAREL_STYLES.length - 1) % APPAREL_STYLES.length
-    );
+    setApparel((prevApparel) => (prevApparel + APPAREL_STYLES.length - 1) % APPAREL_STYLES.length);
+    setUploaded("");
   };
 
   const handleRightClick = () => {
     // Logic for the right button click
     console.log("Right button clicked");
     setApparel((prevApparel) => (prevApparel + 1) % APPAREL_STYLES.length);
+    setUploaded("");
   };
 
   const handleAddToCart = () => {
@@ -75,14 +75,25 @@ function CustomizePage() {
 
     console.log("Added to cart");
 
-    addToCart({
-      name: `${apparel}-${color}-${neckline}-${sleeves}`,
-      price: 19.99,
-      size: size,
-      quantity: quantity,
-      image: getApparelImagePath(),
-      description: `Apparel: ${APPAREL_STYLES[apparel]}, Color: ${color}, Neckline: ${neckline}, Sleeves: ${sleeves}, Fit: ${fit}, Size: ${size}`,
-    });
+    addToCart(
+      new CartItem(
+        getApparelClassName(),
+        19.99,
+        size,
+        `Apparel: ${APPAREL_STYLES[apparel]}, Color: ${color}, Neckline: ${neckline}, Sleeves: ${sleeves}, Fit: ${fit}, Size: ${size}`,
+        quantity,
+        getApparelImagePath()
+      )
+    );
+
+    // addToCart({
+    //   name: `${apparel}-${color}-${neckline}-${sleeves}`,
+    //   price: 19.99,
+    //   size: size,
+    //   quantity: quantity,
+    //   image: getApparelImagePath(),
+    //   description: `Apparel: ${APPAREL_STYLES[apparel]}, Color: ${color}, Neckline: ${neckline}, Sleeves: ${sleeves}, Fit: ${fit}, Size: ${size}`,
+    // });
   };
 
   useEffect(() => {
