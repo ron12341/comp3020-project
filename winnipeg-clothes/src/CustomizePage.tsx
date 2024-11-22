@@ -279,6 +279,7 @@ function CustomizePage() {
               <ImageUploader
                 onFileUpload={handleImageUpload}
                 onFileDelete={handleImageDelete}
+                fileString={uploaded}
               />
             </div>
           </div>

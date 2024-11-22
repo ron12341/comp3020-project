@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./ImageUploader.css";
 
 interface ImageUploaderProps {
   onFileUpload: (image: string) => void;
   onFileDelete: () => void;
+  fileString?: string;
 }
 
-function ImageUploader({ onFileUpload, onFileDelete }: ImageUploaderProps) {
+function ImageUploader({ onFileUpload, onFileDelete, fileString }: ImageUploaderProps) {
   const [dragging, setDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
 
@@ -62,6 +63,12 @@ function ImageUploader({ onFileUpload, onFileDelete }: ImageUploaderProps) {
   const handleClick = () => {
     document.getElementById("file-input")?.click();
   };
+
+  useEffect(() => {
+    if (!fileString) {
+      deleteImage();
+    }
+  }, [fileString]);
 
   return (
     <div
