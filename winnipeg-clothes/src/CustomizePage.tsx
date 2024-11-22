@@ -4,12 +4,14 @@ import NavBar from "./components/NavBar";
 import DisplayPreview from "./components/DisplayPreview";
 import ImageUploader from "./components/ImageUploader";
 import "./CustomizePage.css";
+import { useCart } from "./contexts/CartContext";
 
-const imagesBasePath = "../public/images";
+const imagesBasePath = "/images";
 
 const SIZES = ["XS", "S", "M", "L", "XL", "2XL", "3XL"];
 
 function CustomizePage() {
+  const { addToCart } = useCart();
   const [uploaded, setUploaded] = useState<string | null>(null);
   const [apparel, setApparel] = useState<string>("tshirt");
   const [color, setColor] = useState<string>("white");
@@ -50,8 +52,21 @@ function CustomizePage() {
   };
 
   const handleAddToCart = () => {
-    // Logic for adding to cart
+    
+    if (  quantity === "" || quantity < 1) {
+      alert("Quantity must be at least 1");
+      return;
+    }
+
     console.log("Added to cart");
+
+    addToCart({
+      name: `${apparel}-${color}-${neckline}-${sleeves}`,
+      price: 19.99,
+      size: size,
+      quantity: quantity,
+      image: getApparelImagePath(),
+    });
   };
 
   return (
@@ -263,11 +278,21 @@ function CustomizePage() {
                     type="number"
                     value={quantity}
                     onChange={(e) => {
-                      const value = Number(e.target.value);
-                      setQuantity( value > 0 ? value : 0); // Allow empty value but internally handle as 0
-                      console.log(quantity);
+                      let value = e.target.value;
+
+                      // Remove leading zeros by converting the value to a number
+                      if (value.startsWith("0")) {
+                        value = String(Number(value));
+                      }
+
+                      setQuantity(value === "" ? "" : Number(value)); // Allow empty value
                     }}
                     min="1"
+                    onBlur={(e) => {
+                      if (e.target.value === "") {
+                        setQuantity(1);
+                      }
+                    }}
                   />
                 </div>
               </div>
