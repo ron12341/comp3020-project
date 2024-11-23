@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CartItem } from "../interfaces/CartItem";
+import { CartItem } from "../objects/CartItem";
 
 import "./CartItemCard.css";
 

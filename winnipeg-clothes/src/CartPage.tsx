@@ -6,7 +6,7 @@ import PopupConfirmation from "./components/PopupConfirmation"; // Import PopupC
 
 import "./CartPage.css";
 import { useCart } from "./contexts/CartContext";
-import { CartItem } from "./interfaces/CartItem";
+import { CartItem } from "./objects/CartItem";
 
 const CartPage: React.FC = () => {
   const { cart, removeFromCart, changeQuantity } = useCart();

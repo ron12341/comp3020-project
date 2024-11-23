@@ -5,7 +5,8 @@ import DisplayPreview from "./components/DisplayPreview";
 import ImageUploader from "./components/ImageUploader";
 import "./CustomizePage.css";
 import { useCart } from "./contexts/CartContext";
-import { CartItem } from "./interfaces/CartItem";
+import { CartItem } from "./objects/CartItem";
+
 
 const imagesBasePath = "/images";
 
