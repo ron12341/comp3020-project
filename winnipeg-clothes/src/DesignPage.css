@@ -1,41 +1,87 @@
-html,
 body {
-  height: 100%; /* Ensure full-page height */
-  margin: 0; /* Remove default margins */
-  display: flex;
-  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
 }
 
+/* App container styles */
 .app {
   height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-}
-
-.app .content {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* Content container styles */
+.app .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 20px;
+  color: #333; 
+  background-color: rgba(255, 255, 255, 0.9); 
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  width: 80%;
+  height: 80%;
+  margin: 20px; 
 }
 
+/* Heading styles */
 .app .content h1 {
-  font-size: 40px;
+  font-size: 3rem; 
   margin-bottom: 20px;
+  color: #222; 
+  font-weight: 600; 
+  letter-spacing: 1px; 
+  text-transform: uppercase; 
 }
 
+/* Button container styles */
 .buttons-container {
-  margin-top: 20px; /* Optional: Space between buttons and heading */
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px; 
 }
 
+/* Button styles */
 .buttons-container button {
-  width: 400px;
-  height: 100px;
-  margin: 0 10px; /* Add spacing between buttons */
-  padding: 10px 20px;
-  font-size: 20px;
+  width: 200px;
+  height: 60px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(145deg, #6a1b9a, #9c27b0);
+}
+
+.buttons-container button:hover {
+  transform: translateY(-4px); 
+  background: linear-gradient(145deg, #9c27b0, #6a1b9a); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttons-container button:active {
+  transform: translateY(2px); 
+}
+
+/* Footer styles */
+footer {
+  background-color: #222;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }

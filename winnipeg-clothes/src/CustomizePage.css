@@ -18,8 +18,10 @@ body {
 }
 
 .navbar {
-  height: 10vh; /* Fixed height for navbar */
+  position: relative;
+  height: 10vh;
   background-color: #874d2e;
+  width: 100%;
 }
 
 .footer {

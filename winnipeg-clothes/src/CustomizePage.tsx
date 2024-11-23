@@ -335,7 +335,6 @@ function CustomizePage() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -28,7 +28,7 @@ const NavBar: React.FC = () => {
           </button>
         </Link>
       </nav>
-      <div className={`side-menu ${isMenuOpen ? "open" : ""}`}>
+      <div className={`side-menu ${isMenuOpen ? "open" : "closed"}`}>
         <button className="close-menu" onClick={toggleMenu}>
           ✖
         </button>
@@ -44,6 +44,9 @@ const NavBar: React.FC = () => {
           </li>
           <li>
             <Link to="/contact" onClick={toggleMenu}>Contact</Link>
+          </li>
+          <li>
+            <Link to="/#technology" onClick={toggleMenu}>Technology</Link>
           </li>
         </ul>
       </div>

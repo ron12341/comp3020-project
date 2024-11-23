@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
-
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-
 import "./DesignPage.css";
 
 function DesignPage() {
   return (
     <div className="app">
-      <NavBar />
 
       <div className="content">
         <h1>Design your own clothes</h1>
@@ -20,7 +15,6 @@ function DesignPage() {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 }
