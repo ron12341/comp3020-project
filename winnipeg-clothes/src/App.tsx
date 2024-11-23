@@ -3,6 +3,7 @@ import CustomizePage from "./CustomizePage";
 import { CartProvider } from "./contexts/CartContext";
 import CartPage from "./CartPage";
 import CartItemCard from "./components/CartItemCard";
+import DesignPage from "./DesignPage";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Route path="/customize" element={<CustomizePage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
       </Routes>
-      <CustomizePage />
+      <DesignPage />
       
     </CartProvider>
   );
