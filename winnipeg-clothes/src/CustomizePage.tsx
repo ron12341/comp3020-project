@@ -239,7 +239,6 @@ function CustomizePage() {
               &#8250;
             </button>
           </div>
-          <button className="rotate-btn">Rotate</button>
         </div>
 
         <div className="section">

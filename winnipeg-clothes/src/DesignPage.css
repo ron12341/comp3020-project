@@ -6,16 +6,17 @@ body {
 }
 
 /* App container styles */
-.app {
+.design-page {
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  padding: 100px 0 50px 0;
 }
 
 /* Content container styles */
-.app .content {
+.design-page .content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +34,7 @@ body {
 }
 
 /* Heading styles */
-.app .content h1 {
+.design-page .content h1 {
   font-size: 3rem; 
   margin-bottom: 20px;
   color: #222; 
@@ -43,7 +44,7 @@ body {
 }
 
 /* Button container styles */
-.buttons-container {
+.design-page .buttons-container {
   margin-top: 30px;
   display: flex;
   justify-content: center;
@@ -51,7 +52,7 @@ body {
 }
 
 /* Button styles */
-.buttons-container button {
+.design-page .buttons-container button {
   width: 200px;
   height: 60px;
   padding: 10px;
@@ -65,13 +66,13 @@ body {
   background: linear-gradient(145deg, #6a1b9a, #9c27b0);
 }
 
-.buttons-container button:hover {
+.design-page .buttons-container button:hover {
   transform: translateY(-4px); 
   background: linear-gradient(145deg, #9c27b0, #6a1b9a); 
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.buttons-container button:active {
+.design-page .buttons-container button:active {
   transform: translateY(2px); 
 }
 

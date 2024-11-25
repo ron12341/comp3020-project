@@ -59,43 +59,6 @@
   text-align: right;
 }
 
-/* Controls container */
-.notif-cart-item .item-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-}
-
-/* Quantity input styling */
-.notif-cart-item .quantity-input {
-  width: 60px;
-  padding: 4px 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  text-align: center;
-}
-
-/* Remove button styling */
-.notif-cart-item .remove-btn {
-  padding: 6px 12px;
-  font-size: 14px;
-  color: #fff;
-  background-color: #e74c3c;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.notif-cart-item .remove-btn:hover {
-  background-color: #c0392b;
-}
-
-.notif-cart-item .item-controls.disabled {
-  display: none;
-}
 
 /* Responsive design */
 @media (max-width: 600px) {

@@ -3,7 +3,7 @@ import "./DesignPage.css";
 
 function DesignPage() {
   return (
-    <div className="app">
+    <div className="design-page">
 
       <div className="content">
         <h1>Design your own clothes</h1>

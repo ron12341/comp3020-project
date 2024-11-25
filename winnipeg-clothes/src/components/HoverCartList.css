@@ -1,0 +1,70 @@
+.hover-cart-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow: auto;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hover-cart-list .cart-items {
+  flex: 2; /* Takes up 2/3 of the space */
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  gap: 10px;
+  max-height: 50vh;
+}
+
+.hover-cart-list .total-price-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: larger;
+  color: black;
+}
+
+.hover-cart-list .total-price-container .total-price {
+  font-weight: bold;
+}
+
+.hover-cart-list .buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.hover-cart-list .buttons-container button {
+  width: 100%;
+  padding: 10px;
+}
+
+.hover-cart-list .buttons-container button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.hover-cart-list .buttons-container .checkout-button {
+  background-color: black;
+  color: white;
+  font-size: larger;
+}
+
+.hover-cart-list .buttons-container .bag-button {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  font-size: larger;
+}
+
+.hover-cart-list .cart-items::-webkit-scrollbar {
+  width: 3px;
+}
+
+.hover-cart-list .cart-items::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}

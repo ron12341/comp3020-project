@@ -68,6 +68,10 @@
     gap: 8px;
     margin-top: 8px;
   }
+
+  .cart-item-card .item-controls.disabled {
+    display: none;
+  }
   
   /* Quantity input styling */
   .cart-item-card .quantity-input {

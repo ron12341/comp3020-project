@@ -5,6 +5,7 @@ import { useCart } from "../contexts/CartProvider";
 import { Link } from "react-router-dom";
 import NotificationCartItem from "./NotificationCartItem";
 import { useCartNotification } from "../contexts/CartNotificationProvider";
+import HoverCartList from "./HoverCartList";
 
 const NavBar: React.FC = () => {
   const { cart, latestItem } = useCart();
@@ -42,6 +43,10 @@ const NavBar: React.FC = () => {
               />
             )}
           </div>
+
+          <div className="hover-cart-container">
+            <HoverCartList cart={cart} />
+          </div>
         </div>
       </nav>
       <div className={`side-menu ${isMenuOpen ? "open" : "closed"}`}>
@@ -60,8 +65,8 @@ const NavBar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link to="/products" onClick={toggleMenu}>
-              Products
+            <Link to="/customize" onClick={toggleMenu}>
+              Customize Clothes
             </Link>
           </li>
           <li>

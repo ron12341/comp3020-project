@@ -65,7 +65,7 @@ const CartPage: React.FC = () => {
           {cart.length > 0 ? (
             cart.map((item) => (
               <CartItemCard
-                key={`${item.name}-${item.size}`}
+                key={`${item.name}-${item.size}-${item.color}`}
                 item={item}
                 onChangeQuantity={handleQuantityChange}
                 onRemove={handleRemoveItem}

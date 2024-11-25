@@ -5,12 +5,14 @@ import { CartItem } from "../objects/CartItem";
 
 interface CartItemCardProps {
   item: CartItem;
+  isFunctional?: boolean;
   onChangeQuantity: (item: CartItem, newQuantity: number) => void;
   onRemove: (item: CartItem) => void;
 }
 
 const CartItemCard: React.FC<CartItemCardProps> = ({
   item,
+  isFunctional = true,
   onChangeQuantity,
   onRemove,
 }) => {
@@ -61,7 +63,7 @@ const CartItemCard: React.FC<CartItemCardProps> = ({
             ${(item.price * item.quantity).toFixed(2)}
           </p>
         </div>
-        <div className="item-controls">
+        <div className={`item-controls ${isFunctional ? "" : "disabled"}`}>
           <input
             type="number"
             min="0"

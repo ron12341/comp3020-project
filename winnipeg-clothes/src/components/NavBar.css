@@ -39,29 +39,28 @@
   align-items: center;
   gap: 8px;
   background: none;
-  border: none; 
-  color: #fff; 
-  font-size: 16px; 
+  border: none;
+  color: #fff;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  padding: 5px 10px; 
+  padding: 5px 10px;
   transition: background-color 0.2s ease, transform 0.2s ease;
   border-radius: 5px;
 }
 
 .cart-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2); 
-  transform: scale(1.05); 
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
 .cart-btn img {
-  width: 24px; 
+  width: 24px;
   height: 24px;
 }
 
 .cart-btn p {
-  margin: 0; 
-  
+  margin: 0;
 }
 
 /* Side Menu Styles */
@@ -116,10 +115,30 @@
 }
 
 /* Notification Cart Item Styles */
+.cart-btn-container {
+  position: relative;
+}
+
 .cart-btn-container .notif-cart-container {
   position: absolute;
   top: 100%;
   right: 0;
+  width: 95vw;
   max-width: 500px;
   z-index: 10000;
+}
+
+/* Hover Cart Item Styles */
+.cart-btn-container .hover-cart-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 95vw;
+  max-width: 500px;
+  z-index: 10000;
+}
+
+.cart-btn-container:hover .hover-cart-container {
+  display: block;
 }
