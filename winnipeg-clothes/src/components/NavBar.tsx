@@ -26,26 +26,35 @@ const NavBar: React.FC = () => {
           <img src={logo} alt="Logo" />
           <p className="logo-text">Winnipeg Clothes</p>
         </div>
-        <div className="cart-btn-container">
-          <Link to="/cart">
-            <button className="cart-btn">
-              <img src="/images/icons/cart-icon.svg" alt="Cart Icon" />
-              <p>Cart ({cart.reduce((acc, item) => acc + item.quantity, 0)})</p>
+        <div className="navbar-btns-container">
+          <div className="heart-btn-container">
+            <button className="heart-btn">
+              <img src="/images/icons/heart-icon.webp" alt="Heart Icon" />
             </button>
-          </Link>
-
-          <div className="notif-cart-container">
-            {showNotification && cart.length > 0 && (
-              <NotificationCartItem
-                item={latestItem} // Show the latest added item
-                isVisible={showNotification}
-                onHide={handleHideNotification}
-              />
-            )}
+            <div className="error-msg-container">
+              <p className="error-msg"> Coming Soon! </p>
+            </div>
           </div>
+          <div className="cart-btn-container">
+            <Link to="/cart">
+              <button className="cart-btn">
+                <img src="/images/icons/cart-icon.svg" alt="Cart Icon" />
+              </button>
+            </Link>
 
-          <div className="hover-cart-container">
-            <HoverCartList cart={cart} />
+            <div className="notif-cart-container">
+              {showNotification && cart.length > 0 && (
+                <NotificationCartItem
+                  item={latestItem} // Show the latest added item
+                  isVisible={showNotification}
+                  onHide={handleHideNotification}
+                />
+              )}
+            </div>
+
+            <div className="hover-cart-container">
+              <HoverCartList cart={cart} />
+            </div>
           </div>
         </div>
       </nav>

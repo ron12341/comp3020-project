@@ -33,8 +33,17 @@
   font-weight: bold;
 }
 
+/* NavBar Buttons Styles */
+.navbar-btns-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
 /* Cart Button Styles */
-.cart-btn {
+.cart-btn,
+.heart-btn {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -49,14 +58,18 @@
   border-radius: 5px;
 }
 
-.cart-btn:hover {
+.cart-btn:hover,
+.heart-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
 }
 
-.cart-btn img {
-  width: 24px;
-  height: 24px;
+.cart-btn img,
+.heart-btn img {
+  width: 7vh;
+  height: 7vh;
+  max-width: 35px;
+  max-height: 35px;
 }
 
 .cart-btn p {
@@ -115,7 +128,8 @@
 }
 
 /* Notification Cart Item Styles */
-.cart-btn-container {
+.cart-btn-container,
+.heart-btn-container {
   position: relative;
 }
 
@@ -128,8 +142,8 @@
   z-index: 10000;
 }
 
-/* Hover Cart Item Styles */
-.cart-btn-container .hover-cart-container {
+/* Hover Effect On Buttons Styles */
+.cart-btn-container .hover-cart-container{
   display: none;
   position: absolute;
   top: 100%;
@@ -139,6 +153,28 @@
   z-index: 10000;
 }
 
-.cart-btn-container:hover .hover-cart-container {
+.heart-btn-container .error-msg-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  max-width: 500px;
+  z-index: 10000;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.cart-btn-container:hover .hover-cart-container,
+.heart-btn-container:hover .error-msg-container {
   display: block;
 }
+
+.error-msg-container .error-msg {
+  display: flex;
+  white-space: nowrap;
+  font-size: 15px;
+}
+
