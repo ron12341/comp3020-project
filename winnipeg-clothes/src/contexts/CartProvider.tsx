@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { CartItem } from "../objects/CartItem";
 
+
 interface CartContextType {
+  latestItem: CartItem;
   cart: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (item: CartItem) => void;
@@ -15,12 +17,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [latestItem, setLatestItem] = useState<CartItem>(new CartItem("", 0, "", "", "", 0, ""));
 
   const addToCart = (item: CartItem) => {
+    setLatestItem(item);
     setCart((prevCart) => {
       const existingItem = prevCart.find((cartItem) => cartItem.equals(item));
-      console.log("Existing Item: ", existingItem);
-      console.log("Adding ITem: ", item);
       if (existingItem) {
         return prevCart.map((cartItem) =>
           cartItem.equals(item)
@@ -28,6 +30,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
                 cartItem.name,
                 cartItem.price,
                 cartItem.size,
+                cartItem.color,
                 cartItem.description,
                 cartItem.quantity + item.quantity,
                 cartItem.image
@@ -51,6 +54,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
             item.name,
             item.price,
             item.size,
+            item.color,
             item.description,
             newQuantity,
             item.image
@@ -67,7 +71,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, changeQuantity }}
+      value={{latestItem, cart, addToCart, removeFromCart, clearCart, changeQuantity }}
     >
       {children}
     </CartContext.Provider>

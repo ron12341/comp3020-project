@@ -3,6 +3,7 @@ export class CartItem {
     public name: string,
     public price: number,
     public size: string,
+    public color: string,
     public description: string,
     public quantity: number,
     public image?: string

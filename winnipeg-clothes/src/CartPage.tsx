@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import CartItemCard from "./components/CartItemCard";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import PopupConfirmation from "./components/PopupConfirmation"; // Import PopupConfirmation
 
 import "./CartPage.css";
-import { useCart } from "./contexts/CartContext";
+import { useCart } from "./contexts/CartProvider";
 import { CartItem } from "./objects/CartItem";
 
 const CartPage: React.FC = () => {
   const { cart, removeFromCart, changeQuantity } = useCart();
   const [isPopupVisible, setPopupVisible] = useState(false);
-  const [itemToConfirmRemove, setItemToConfirmRemove] = useState<CartItem | null>(null);
+  const [itemToConfirmRemove, setItemToConfirmRemove] =
+    useState<CartItem | null>(null);
 
   // Handle quantity change for each cart item
-  const handleQuantityChange = (itemToChange: CartItem, newQuantity: number) => {
+  const handleQuantityChange = (
+    itemToChange: CartItem,
+    newQuantity: number
+  ) => {
     console.log("Quantity changed:", newQuantity);
 
     console.log(newQuantity);
 
     if (newQuantity <= 0) {
-      setItemToConfirmRemove(itemToChange); 
+      setItemToConfirmRemove(itemToChange);
       setPopupVisible(true);
       return;
     }
@@ -58,6 +61,7 @@ const CartPage: React.FC = () => {
       <NavBar />
       <div className="cart-page">
         <div className="cart-items">
+          <h2>Cart Items</h2>
           {cart.length > 0 ? (
             cart.map((item) => (
               <CartItemCard
@@ -73,19 +77,34 @@ const CartPage: React.FC = () => {
         </div>
         <div className="cart-summary">
           <h2>Order Summary</h2>
-          <p>Total: ${totalValue.toFixed(2)}</p>
+          <ul className="order-summary-list">
+            {cart.map((item) => (
+              <li
+                key={`${item.name}-${item.size}`}
+                className="order-summary-item"
+              >
+                <div className="item-details">
+                  <span>{item.name}</span>
+                  <span>Size: {item.size}</span>
+                  <span>Quantity: {item.quantity}</span>
+                </div>
+                <span className="item-price">
+                  ${(item.price * item.quantity).toFixed(2)}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="order-summary-total">Total: ${totalValue.toFixed(2)}</p>
         </div>
       </div>
 
       {/* PopupConfirmation Component */}
       <PopupConfirmation
-        message={`Quantity of "${itemToConfirmRemove?.name}" is 0. Do you want to remove this item from your cart?`}
-        onConfirm={handleConfirmRemove}  
-        onCancel={handleCancelRemove}    
-        isVisible={isPopupVisible}     
+        message={`Do you want to remove "${itemToConfirmRemove?.name}" from your cart?`}
+        onConfirm={handleConfirmRemove}
+        onCancel={handleCancelRemove}
+        isVisible={isPopupVisible}
       />
-
-      <Footer />
     </div>
   );
 };

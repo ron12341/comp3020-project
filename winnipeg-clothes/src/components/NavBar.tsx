@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./NavBar.css";
 import logo from "../assets/logo.png";
-import { useCart } from "../contexts/CartContext";
+import { useCart } from "../contexts/CartProvider";
 import { Link } from "react-router-dom";
+import NotificationCartItem from "./NotificationCartItem";
+import { useCartNotification } from "../contexts/CartNotificationProvider";
 
 const NavBar: React.FC = () => {
-  const { cart } = useCart();
+  const { cart, latestItem } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { showNotification, handleHideNotification } = useCartNotification();
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -16,17 +19,30 @@ const NavBar: React.FC = () => {
     <>
       <nav className="navbar">
         <button className="menu-toggle" onClick={toggleMenu}>
-          ☰ Menu
+          ☰
         </button>
         <div className="logo">
           <img src={logo} alt="Logo" />
           <p className="logo-text">Winnipeg Clothes</p>
         </div>
-        <Link to="/cart">
-          <button className="cart-btn">
-            🛒 Cart ({cart.reduce((acc, item) => acc + item.quantity, 0)})
-          </button>
-        </Link>
+        <div className="cart-btn-container">
+          <Link to="/cart">
+            <button className="cart-btn">
+              <img src="/images/icons/cart-icon.svg" alt="Cart Icon" />
+              <p>Cart ({cart.reduce((acc, item) => acc + item.quantity, 0)})</p>
+            </button>
+          </Link>
+
+          <div className="notif-cart-container">
+            {showNotification && cart.length > 0 && (
+              <NotificationCartItem
+                item={latestItem} // Show the latest added item
+                isVisible={showNotification}
+                onHide={handleHideNotification}
+              />
+            )}
+          </div>
+        </div>
       </nav>
       <div className={`side-menu ${isMenuOpen ? "open" : "closed"}`}>
         <button className="close-menu" onClick={toggleMenu}>
@@ -34,19 +50,29 @@ const NavBar: React.FC = () => {
         </button>
         <ul>
           <li>
-            <Link to="/" onClick={toggleMenu}>Home</Link>
+            <Link to="/" onClick={toggleMenu}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about" onClick={toggleMenu}>About Us</Link>
+            <Link to="/about" onClick={toggleMenu}>
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to="/products" onClick={toggleMenu}>Products</Link>
+            <Link to="/products" onClick={toggleMenu}>
+              Products
+            </Link>
           </li>
           <li>
-            <Link to="/contact" onClick={toggleMenu}>Contact</Link>
+            <Link to="/contact" onClick={toggleMenu}>
+              Contact
+            </Link>
           </li>
           <li>
-            <Link to="/#technology" onClick={toggleMenu}>Technology</Link>
+            <Link to="/#technology" onClick={toggleMenu}>
+              Technology
+            </Link>
           </li>
         </ul>
       </div>

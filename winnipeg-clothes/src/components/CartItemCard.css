@@ -12,16 +12,15 @@
   }
   
   /* Image styling */
-  .item-image {
-    width: 100px;
-    height: 100px;
+  .cart-item-card .item-image {
+    width: 150px;
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid #ccc;
   }
   
   /* Details container */
-  .item-details {
+  .cart-item-card .item-details {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -29,28 +28,41 @@
   }
   
   /* Text styling */
-  .item-description {
+  .cart-item-card .item-description {
     font-size: 16px;
     font-weight: bold;
     color: #333;
     margin: 0;
   }
-  
-  .item-size {
-    font-size: 14px;
+
+  .cart-item-card .item-details-details-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px 0;
+  }
+
+  .cart-item-card .item-details .item-details-details {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 16px;
     color: #666;
-    margin: 4px 0;
+  }
+
+  .cart-item-card .item-details-details p {
+    margin: 5px 0;
   }
   
-  .item-price {
+  .cart-item-card .total-item-price {
     font-size: 16px;
     font-weight: bold;
     color: #27ae60;
-    margin: 8px 0;
+    text-align: right;
   }
   
   /* Controls container */
-  .item-controls {
+  .cart-item-card .item-controls {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -58,7 +70,7 @@
   }
   
   /* Quantity input styling */
-  .quantity-input {
+  .cart-item-card .quantity-input {
     width: 60px;
     padding: 4px 8px;
     font-size: 14px;
@@ -68,7 +80,7 @@
   }
   
   /* Remove button styling */
-  .remove-btn {
+  .cart-item-card .remove-btn {
     padding: 6px 12px;
     font-size: 14px;
     color: #fff;
@@ -79,28 +91,32 @@
     transition: background-color 0.3s ease;
   }
   
-  .remove-btn:hover {
+  .cart-item-card .remove-btn:hover {
     background-color: #c0392b;
+  }
+
+  .cart-item-card .item-controls.disabled {
+    display: none;
   }
   
   /* Responsive design */
   @media (max-width: 600px) {
-    .cart-item-card {
+    .cart-item-card .cart-item-card {
       flex-direction: column;
       align-items: flex-start;
     }
   
-    .item-image {
+    .cart-item-card .item-image {
       width: 80px;
       height: 80px;
     }
   
-    .item-controls {
+    .cart-item-card .item-controls {
       flex-direction: column;
       align-items: flex-start;
     }
   
-    .quantity-input {
+    .cart-item-card .quantity-input {
       width: 100%;
     }
   }

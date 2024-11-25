@@ -4,8 +4,9 @@ import NavBar from "./components/NavBar";
 import DisplayPreview from "./components/DisplayPreview";
 import ImageUploader from "./components/ImageUploader";
 import "./CustomizePage.css";
-import { useCart } from "./contexts/CartContext";
+import { useCart } from "./contexts/CartProvider";
 import { CartItem } from "./objects/CartItem";
+import { useCartNotification } from "./contexts/CartNotificationProvider";
 
 
 const imagesBasePath = "/images";
@@ -15,6 +16,7 @@ const APPAREL_STYLES = ["tshirt", "polo", "hoodie", "sweatpant", "hat"];
 
 function CustomizePage() {
   const { addToCart } = useCart();
+  const { handleShowNotification } = useCartNotification();
   const [uploaded, setUploaded] = useState<string | "">("");
   const [apparel, setApparel] = useState<number>(0);
   const [color, setColor] = useState<string>("white");
@@ -81,20 +83,14 @@ function CustomizePage() {
         getApparelClassName(),
         19.99,
         size,
+        color,
         `Apparel: ${APPAREL_STYLES[apparel]}, Color: ${color}, Neckline: ${neckline}, Sleeves: ${sleeves}, Fit: ${fit}, Size: ${size}`,
         quantity,
         getApparelImagePath()
       )
     );
 
-    // addToCart({
-    //   name: `${apparel}-${color}-${neckline}-${sleeves}`,
-    //   price: 19.99,
-    //   size: size,
-    //   quantity: quantity,
-    //   image: getApparelImagePath(),
-    //   description: `Apparel: ${APPAREL_STYLES[apparel]}, Color: ${color}, Neckline: ${neckline}, Sleeves: ${sleeves}, Fit: ${fit}, Size: ${size}`,
-    // });
+    handleShowNotification();
   };
 
   useEffect(() => {

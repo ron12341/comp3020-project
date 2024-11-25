@@ -33,7 +33,7 @@ const sweatpantsConfigurations = [
 
 // Factory functions
 const createTshirt = (color: string, neckline: string, sleeves: string): Product => {
-  const id = `tshirt_${color}_${neckline}_${sleeves}`;
+  const id = `tshirt-${color}-${neckline}-${sleeves}`;
   const description = `T-shirt with a ${neckline} neckline, ${sleeves} sleeves, and a ${color} color.`;
   const imagePath = `/images/apparels/${id}.png`;
 
@@ -41,7 +41,7 @@ const createTshirt = (color: string, neckline: string, sleeves: string): Product
 };
 
 const createHoodie = (color: string): Product => {
-  const id = `hoodie_${color}`;
+  const id = `hoodie-${color}`;
   const description = `Hoodie in ${color} color.`;
   const imagePath = `/images/apparels/${id}.png`;
 
@@ -49,7 +49,7 @@ const createHoodie = (color: string): Product => {
 };
 
 const createHat = (color: string): Product => {
-  const id = `hat_${color}`;
+  const id = `hat-${color}`;
   const description = `Hat in ${color} color.`;
   const imagePath = `/images/apparels/${id}.png`;
 
@@ -57,7 +57,7 @@ const createHat = (color: string): Product => {
 };
 
 const createSweatpants = (color: string): Product => {
-  const id = `sweatpants_${color}`;
+  const id = `sweatpants-${color}`;
   const description = `Sweatpants in ${color} color.`;
   const imagePath = `/images/apparels/${id}.png`;
 
