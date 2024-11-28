@@ -1,0 +1,308 @@
+:root {
+  --display-section-width: 60%;
+  --other-section-width: 25%;
+}
+
+html,
+body {
+  height: 100%; /* Ensure the root elements take up the full height of the viewport */
+  margin: 0; /* Remove default margin */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  position: relative;
+  height: 10vh;
+  background-color: #874d2e;
+  width: 100%;
+}
+
+.footer {
+  height: 10vh; /* Fixed height for footer */
+  background-color: #333;
+}
+
+.app .contents {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.app .contents .section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: var(--other-section-width);
+  max-width: 350px;
+  overflow: hidden;
+}
+
+.app .contents .section .section-customize {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.app .contents .section .section-customize .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* DISPLAY SECTION */
+
+.display-section {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.display-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  gap: 2%;
+}
+
+.display-section .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 90%;
+  max-width: 550px;
+}
+
+.display-section .image-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.display-preview-container {
+  height: 40vh;
+  width: 20vw;
+  position: absolute;
+  margin: auto;
+  border-radius: 8px;
+}
+
+/* .display-section .rotate-btn {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.display-section .rotate-btn:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+} */
+
+.left-button,
+.right-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 24px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.left-button:hover,
+.right-button:hover {
+  background-color: #0056b3;
+}
+
+.left-button:focus,
+.right-button:focus {
+  outline: none;
+}
+
+.left-button {
+  transform: rotate(180deg); /* Rotates left button to point left */
+}
+
+/* OPTIONS SECTION */
+
+.options-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  gap: 15px;
+}
+
+.options-container .option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.option:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.option img {
+  width: 100%;
+  height: 40px;
+  border: 2px solid black;
+}
+
+.option span {
+  margin-top: 12px;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.option.selected {
+  transform: scale(1.05);
+  border-color: #007bff;
+  background-color: #f0f8ff3d;
+}
+
+.option.selected img {
+  border-color: #007bff;
+}
+
+/* COLOR SECTION */
+
+.option-color {
+  height: 40px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.option.selected .option-color {
+  transform: scale(1.05);
+  border: 2px solid #007bff;
+}
+
+#white {
+  background-color: white;
+}
+
+#black {
+  background-color: black;
+}
+
+#grey {
+  background-color: rgba(128, 128, 128, 0.29);
+}
+
+#blue {
+  background-color: blue;
+}
+
+/* SIZE AND QUANTITY SECTION */
+.size-quantity-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 3vh;
+}
+
+.size-quantity-button-container .size-quantity-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.size-container, .quantity-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.size-quantity-button-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.size-quantity-button-container select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.size-quantity-button-container input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100px;
+}
+
+.size-quantity-button-container button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* APPAREL IMAGE SECTION */
+
+.tshirt-white-vneck-regular {
+  transform: translateX(5px);
+}
+
+@media (max-width: 1300px) {
+  .size-quantity-button-container .size-quantity-container {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1000px) {
+  .options-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .options-container .option {
+    width: 50%;
+  }
+
+  .app .contents .section {
+    overflow: auto;
+  }
+}

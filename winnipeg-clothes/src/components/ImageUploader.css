@@ -1,0 +1,54 @@
+.image-uploader {
+  width: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: white;
+  transition: background-color 0.2s;
+  cursor: copy;
+}
+
+.image-uploader.dragging {
+  border-color: #007bff;
+  background-color: #f0f8ff;
+}
+
+.image-uploader input {
+  display: none;
+}
+
+.image-uploader img {
+  display: block;
+  width: 150px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.filename-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.image-uploader p {
+  margin: 0;
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: red;
+  cursor: pointer;
+  transform: scale(1.25);
+}
+
+.delete-btn:hover {
+  color: darkred;
+}
+

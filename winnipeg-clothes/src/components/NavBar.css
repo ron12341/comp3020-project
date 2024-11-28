@@ -1,0 +1,180 @@
+/* Navbar Styles */
+.navbar {
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #54b8e3;
+  color: #fff;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* NavBar Buttons Styles */
+.navbar-btns-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+/* Cart Button Styles */
+.cart-btn,
+.heart-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  border-radius: 5px;
+}
+
+.cart-btn:hover,
+.heart-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.cart-btn img,
+.heart-btn img {
+  width: 7vh;
+  height: 7vh;
+  max-width: 35px;
+  max-height: 35px;
+}
+
+.cart-btn p {
+  margin: 0;
+}
+
+/* Side Menu Styles */
+.side-menu {
+  position: fixed;
+  top: 0;
+  min-width: fit-content;
+  width: 30%;
+  height: 100%;
+  background-color: #444;
+  color: white;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 20px;
+}
+
+.side-menu.open {
+  left: 0; /* Slide into view */
+}
+
+.side-menu.closed {
+  display: none;
+}
+
+.side-menu .close-menu {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu ul li {
+  margin: 15px 0;
+}
+
+.side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.side-menu ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Notification Cart Item Styles */
+.cart-btn-container,
+.heart-btn-container {
+  position: relative;
+}
+
+.cart-btn-container .notif-cart-container {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 95vw;
+  max-width: 500px;
+  z-index: 10000;
+}
+
+/* Hover Effect On Buttons Styles */
+.cart-btn-container .hover-cart-container{
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 95vw;
+  max-width: 500px;
+  z-index: 10000;
+}
+
+.heart-btn-container .error-msg-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  max-width: 500px;
+  z-index: 10000;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.cart-btn-container:hover .hover-cart-container,
+.heart-btn-container:hover .error-msg-container {
+  display: block;
+}
+
+.error-msg-container .error-msg {
+  display: flex;
+  white-space: nowrap;
+  font-size: 15px;
+}
+

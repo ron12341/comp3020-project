@@ -1,0 +1,43 @@
+/* Basic structure to make sure the page is in normal flow */
+.homepage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.homepage .navbar-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.homepage .scroll-container {
+  overflow-y: auto;
+  flex-grow: 1;
+  scroll-snap-type: y mandatory;
+}
+
+.homepage .section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage .design-page {
+  background-color: #f5f5f5;
+}
+
+.homepage .technology-section {
+  background-color: #e0e0e0;
+}
+
+.homepage .snap-enabled {
+  scroll-snap-type: y mandatory;
+}
+
+.homepage .snap-disabled {
+  scroll-snap-type: none;
+}

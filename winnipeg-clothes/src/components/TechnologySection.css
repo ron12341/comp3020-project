@@ -1,0 +1,117 @@
+/* General styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.technology-section {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 50px 0;
+    box-sizing: border-box;
+}
+
+.section-title {
+    font-size: 2.5rem; 
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.section-content-container {
+    flex: 1;
+    width: 90%; 
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px; 
+    background-image: url('../assets/backgrounds/3d-printer.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+.section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45%; 
+    padding: 20px;
+    text-align: justify;
+    color: #333;
+    border: #333 solid 1px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    gap: 2vh;
+    box-sizing: border-box;
+}
+
+.section-content .section-content-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.section-content .section-content-text {
+    font-size: 1rem; 
+    margin-bottom: 10px;
+    text-align: justify;
+    color: #333;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .section-content-container {
+        flex-direction: column; 
+        gap: 15px;
+    }
+
+    .section-content {
+        width: 100%; 
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-content .section-content-title {
+        font-size: 1.5rem;
+    }
+
+    .section-content .section-content-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-content-container {
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-content .section-content-title {
+        font-size: 1.3rem;
+    }
+
+    .section-content .section-content-text {
+        font-size: 0.8rem;
+    }
+}

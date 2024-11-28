@@ -1,0 +1,91 @@
+/* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .testimonials-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    background-color: #f2f2f2;
+    padding: 150px 0 50px 0;
+    box-sizing: border-box;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #333;
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    height: 100%;
+  }
+  
+  .testimonial-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonial-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .testimonial-image {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-quote {
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-signature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .testimonial-portrait {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .testimonial-person {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .testimonial-job-title {
+    font-size: 0.875rem;
+    color: #777;
+  }
+  
