@@ -12,6 +12,7 @@ const imagesBasePath = "/images";
 
 const SIZES = ["XS", "S", "M", "L", "XL", "2XL", "3XL"];
 const APPAREL_STYLES = ["tshirt", "polo", "hoodie", "sweatpant", "hat"];
+const APPAREL_PRICE = 30.00;
 
 function CustomizePage() {
   const { addToCart } = useCart();
@@ -80,7 +81,7 @@ function CustomizePage() {
     addToCart(
       new CartItem(
         getApparelClassName(),
-        19.99,
+        APPAREL_PRICE,
         size,
         color,
         `Apparel: ${APPAREL_STYLES[apparel]}, Color: ${color}, Neckline: ${neckline}, Sleeves: ${sleeves}, Fit: ${fit}, Size: ${size}`,
