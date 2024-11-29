@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import DisplayPreview from "./components/DisplayPreview";
 import ImageUploader from "./components/ImageUploader";
