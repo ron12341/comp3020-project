@@ -1,6 +1,8 @@
 /* Navbar Styles */
 .navbar {
-  height: fit-content;
+  min-height: 150px;
+  max-height: 12.5vh;
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,10 +25,12 @@
   gap: 10px;
 }
 
+
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: auto;
 }
+
 
 .logo-text {
   font-size: 18px;
@@ -66,10 +70,10 @@
 
 .cart-btn img,
 .heart-btn img {
-  width: 7vh;
-  height: 7vh;
-  max-width: 35px;
-  max-height: 35px;
+  width: 8vh;
+  height: 8vh;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .cart-btn p {

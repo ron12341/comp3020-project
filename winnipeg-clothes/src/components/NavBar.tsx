@@ -20,21 +20,21 @@ const NavBar: React.FC = () => {
     <>
       <nav className="navbar">
         <button className="menu-toggle" onClick={toggleMenu}>
-          ☰
+          <img src="/images/icons/Menu.svg" alt="Menu Icon" />
         </button>
         <div className="logo">
           <img src={logo} alt="Logo" />
-          <p className="logo-text">Winnipeg Clothes</p>
+          {/* <p className="logo-text">Winnipeg Clothes</p> */}
         </div>
         <div className="navbar-btns-container">
-          <div className="heart-btn-container">
+          {/* <div className="heart-btn-container">
             <button className="heart-btn">
               <img src="/images/icons/heart-icon.webp" alt="Heart Icon" />
             </button>
             <div className="error-msg-container">
               <p className="error-msg"> Coming Soon! </p>
             </div>
-          </div>
+          </div> */}
           <div className="cart-btn-container">
             <Link to="/cart">
               <button className="cart-btn">

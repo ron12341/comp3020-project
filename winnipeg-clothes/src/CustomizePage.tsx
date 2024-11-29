@@ -42,6 +42,24 @@ function CustomizePage() {
     return className;
   };
 
+  const getApparelName = () => {
+    switch (apparel) {
+      case 0:
+        return "Basic T-Shirt";
+      case 1:
+        return "Basic Polo";
+      case 2:
+        return "Basic Hoodie";
+      case 3:
+        return "Basic Sweatpant";
+      case 4:
+        return "Basic Hat";
+      default:
+        return "Apparel";
+
+    }
+  };
+
   const getApparelImagePath = () => {
     return `${imagesBasePath}/apparels/${getApparelClassName()}.png`;
   };
@@ -84,7 +102,7 @@ function CustomizePage() {
         APPAREL_PRICE,
         size,
         color,
-        `Apparel: ${APPAREL_STYLES[apparel]}, Color: ${color}, Neckline: ${neckline}, Sleeves: ${sleeves}, Fit: ${fit}, Size: ${size}`,
+        `Apparel: ${getApparelName()}`,
         quantity,
         getApparelImagePath()
       )
